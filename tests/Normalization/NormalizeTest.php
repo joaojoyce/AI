@@ -44,5 +44,19 @@ class NormalizeTest extends PHPUnit_Framework_TestCase {
 
     }
 
+    public function testEquilateralNormalization() {
+        $values = ["rock","paper","scissors"];
+
+        $normalizer = new \JoaoJoyce\AI\Normalization\EquilateralNormalization($values);
+        $result = $normalizer->normalize();
+
+        $this->assertEquals(-0.866,$result[0][0],'',0.01);
+        $this->assertEquals(-0.5,$result[0][1],'',0.01);
+        $this->assertEquals(0.866,$result[1][0],'',0.01);
+        $this->assertEquals(-0.5,$result[1][1],'',0.01);
+        $this->assertEquals(0,$result[2][0],'',0.01);
+        $this->assertEquals(1,$result[2][1],'',0.01);
+    }
+
 }
  
